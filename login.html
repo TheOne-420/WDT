@@ -5,8 +5,12 @@
     <title>Document</title>
 </head>
 <body>
-        <label for="i1">USERNAME:</label>
-        <input type="text" id="i1">
+        <label for="username">USERNAME:</label>
+        <input type="text" id="username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+
         <input type="submit" onclick="validate()">
    
    
@@ -17,16 +21,21 @@
     
   
     function validate(){
+       console.log();
        
-        var i1=document.getElementById("i1").value;
-        
-        if(i1=="")
+        let username=document.getElementById("username").value;
+        let password=document.getElementById("password").value;
+       
+        if(username=="" ||password=="")
         {
-            alert("Please Enter Username");
-            
+            alert("Please enter all details");
+            return ;
         }
-        else 
+      
+        else
         {
+
+        
             //Make a request to get JSON data
             let h = new XMLHttpRequest();
             h.open('GET', 'login.json', true );
@@ -38,22 +47,25 @@
               {
                 //Convert to object from JSON string
                 var obj = JSON.parse(this.responseText);
+                console.log(obj);
                 //Redirect to other page if username matches
-                if(obj.username==i1)
+                if(obj.username==username && obj.password==password)
                 {
-                    alert("Welcome "+i1);
+                    alert("Welcome "+ username);
                     window.location ="payslip.html";
+                    ;
                 }
                 else
                 {
-                    alert("Invalid Username");
+                    alert("Invalid Username or password");
                 }
                
             
-              } 
-          }
+              }
+            }
         }
         }
+        
  </script>
 </body>
 </html>
