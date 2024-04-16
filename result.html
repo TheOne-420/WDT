@@ -1,43 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Document</title>
+    <title>marksheet</title>
+    <style>
+    
+      #info label
+      {
+        width: 100px;
+        display: inline-flex;
+        color: red;
+      }
+      span
+      {
+        width:90px;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <div id="info">
 
- 
-    <label for="name"> name </label>
-    <input type="text" id="name" />
-    <label for="Department"> marks </label>
-    <input type="text" id="m" />
-    <button type="submit" onclick="genenrate()">SUBMIT</button>
+    <!-- Personal information -->
+    <label for="schoolName"> School name </label>
+    <input type="text" id="schoolName" />
+
+    <br>
+
+    <label for="studentName"> Student name </label>
+    <input type="text" id="studentName" />
+    <br>
+
+    <label for="fatherName">Father's name </label>
+    <input type="text" id="fatherName" />
+
+    <br>
+
+    <label for="dob">DOB</label>
+    <input type="date" id="dob">
+
+    <br>
+
+    <label>Gender</label>
+    <input type="radio" name="sex" ">Male
+    <input type="radio" name="sex"   >Female
+    <br>
+
+    <!-- Academic info -->
+    <label for="hindi">Hindi marks </label>
+    <input type="text" id="hindi" />
+    <br>
+
+    <label for="english">English marks</label>
+    <input type="text" id="english" />
+      <br>
+
+    <label for="maths">Maths marks</label>
+    <input type="text" id="maths" />
+      <br>
+
+    <label for="physics">Physics marks</label>
+    <input type="text" id="physics" />
+      <br>
+
+    <label for="chemistry">Chemistry marks</label>
+    <input type="text" id="chemistry" />
+
+
+    <button type="submit" onclick="generate()">SUBMIT</button>
    </div>
-    <div id="pay">
+   
+    <div id="marksheet">
+      <div id="logo">
+        <h1>LJ UNI</h1>
+        <span id="school"></span>
+      </div> 
+      <span id="sname"></span>
+      <span id="abbrv"></span>
+      <span id="fname"></span>
+      <br>
+      <span id="age"></span>
+      <span id="sex"></span>
       <table>
         <tr>
-          <th>subject</th>
-
-          <th>Subject name</th>
-          <th>Marks</th>
+          <th>Subject Code</th>
+          <th>Subject Name</th>
+          <th>Min Marks</th>
+          <th>Max Marks</th>
+          <th>Marks obtained</th>
+          <th>Remark</th>
         </tr>
         <tr>
           <td >1</td>
           <td >HINDI</td>
-          <td id="marks"></td>
+          <td></td>
+          <td>35</td>
+          <td>100</td>
+          <td id="hmarks"></td>
+          <td id="hremark"></td>
         </tr>
+        <tr>
+          <td >2</td>
+          <td >English</td>
+          <td></td>
+          <td>35</td>
+          <td>100</td>
+          <td id="emarks"></td>
+          <td id="eremark"></td>
+        </tr>
+        <tr>
+          <td >3</td>
+          <td >Maths</td>
+          <td></td>
+          <td>35</td>
+          <td>100</td>
+          <td id="mmarks"></td>
+          <td id="mremark"></td>
+        </tr>
+        <tr>
+          <td >4</td>
+          <td >Phys</td>
+          <td></td>
+          <td>35</td>
+          <td>100</td>
+          <td id="pmarks"></td>
+          <td id="premark"></td>
+        </tr>
+        <tr>
+          <td >5</td>
+          <td >Chem</td>
+          <td></td>
+          <td>35</td>
+          <td>100</td>
+          <td id="cmarks"></td>
+          <td id="cremark"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <th>Total</th>
+          <th>400</th>
+          <th id="total"></th>
+        </tr>  
       </table>
+      <label  id="statment" style="font-weight: bold;">
+        Result: Compartment in Hindi and Physics
+      </label>
     </div>
   </body>
   <script>
-    function genenrate() 
-    {
-         
-      
-       let m = document.getElementById("m").value;
-        document.getElementById("marks").innerHTML = m;
+    function generate() 
+    {     //Marks input
+       let hindiMarks = parseInt(document.getElementById("hindi").value);
+       let englishMarks = parseInt(document.getElementById("english").value);
+       let mathsMarks = parseInt(document.getElementById("maths").value);
+       let physicsMarks = parseInt(document.getElementById("physics").value);
+       let chemistryMarks = parseInt(document.getElementById("chemistry").value);
+       let total = hindiMarks + englishMarks + mathsMarks + physicsMarks + chemistryMarks;
+       let totalMarks = document.getElementById("total");
+       totalMarks.innerHTML=total;
+       
+       //Info input
+       let studentName = document.getElementById("studentName").value;
+       let fatherName = document.getElementById("fatherName").value;
+       let dob = document.getElementById("dob").value;
+       let sexInput = document.getElementsByName("sex");
+       let school = document.getElementById("schoolName").value; 
 
-        document.getElementById("info").style.display="none";
+       //Display the name
+       document.getElementById("sname").innerHTML = studentName;
+       document.getElementById("fname").innerHTML = fatherName;
+       document.getElementById("age").innerHTML = dob;
+       document.getElementById("school").innerHTML = school;
+
+       //Displays the gender
+       if(sexInput[0].checked)
+       {
+        document.getElementById("sex").innerHTML='Male'
+        document.getElementById("abbrv").innerHTML='S/o'
+       }
+       else if(sexInput[1].checked)
+        {
+        document.getElementById("sex").innerHTML='Female'
+        document.getElementById("abbrv").innerHTML='D/o'
+       } 
+        //display remark
+
+        hindiMarks>=35 ? 
+          document.getElementById("hremark").innerHTML = 'Pass'
+        : document.getElementById("hremark").innerHTML = 'Fail';
+
+        englishMarks>=35 ? document.getElementById("eremark").innerHTML = 'Pass' :
+        document.getElementById("eremark").innerHTML = 'Fail';
+
+        mathsMarks>=35 ? document.getElementById("mremark").innerHTML = 'Pass' :
+        document.getElementById("mremark").innerHTML = 'Fail';
+
+        physicsMarks>=35 ? document.getElementById("premark").innerHTML = 'Pass' :
+        document.getElementById("premark").innerHTML = 'Fail';
+    
+         chemistryMarks>=35 ? document.getElementById("cremark").innerHTML = 'Pass' :
+         document.getElementById("cremark").innerHTML = 'Fail';
+
+           //  //define the student object
+            //  let studentJSON = JSON.stringify(student);
+            //  //Make a request to get JSON data
+            //  let h = new XMLHttpRequest();
+            //  h.open('GET', 'login.json', true );
+            //  h.send();
+        //document.getElementById("info").style.display="none";
     }
   </script>
 </html>
