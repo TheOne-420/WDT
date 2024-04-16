@@ -1,48 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Document</title>
+    <title>Pay Slip</title>
+    <style>
+      th,table 
+      {
+        border: 2px greenyellow solid;
+        color: blue;
+        background-color: violet;
+        
+      }
+    </style>
   </head>
   <body>
-    <div id="data">
-
+    <div id="inputInfo">
       <h1>Payslip</h1>
-    <label for="name"> name </label>
-    <input type="text" id="name" />
+    <label for="emname">Employee Name </label>
+    <input type="text" id="emname" />
+      <br>
     <label for="department"> Department </label>
     <input type="text" id="department" />
-    <button onclick="result()">SUBMIT</button>
+      <br>
+      <label for="desgination"> Desgination </label>
+      <input type="text" id="designation" />
+      <br>
+      <label for="bp"> Basic Pay </label>
+      <input type="text" id="bp" />
+      <br>
+      <label for="hra"> HRA </label>
+      <input type="text" id="hra" />
+      <br>
+
+      <label for="da"> DA: </label>
+      <input type="text" id="da" /> 
+      <br>
+    
+    <button onclick="payslip()">SUBMIT</button>
+    <br>
    </div>
     <div id="result">
-      <table>
-
+      <table > 
+        <tr>
+          <th colspan="20">Company name</th>
+        </tr>
+          <th colspan="10">Salary slip OCT 2024</th>
         <tr>
           
-          <td>Name</td>
-          
-          <td colspan="4" id="rname"  width="100">&nbsp;</td>
-         
+          <td>Name</td>   
+          <td colspan="4" id="ename"  width="100"></td>
+
           <td >Depo</td>
-          <td id="rd" width="100">&nbsp;</td>
-        
+          <td id="edept" width="100"></td>
         </tr>  
         <tr>
           <td>ENO</td>
+          <td colspan="4" id="eno"  width="100">1</td>
+          <td >Bank No.</td>
+          <td id="ebank" width="100"></td>
         </tr>
+        <tr>
+          <td>Desgination</td>
+          <td colspan="4" id="desgination"  width="100"></td>
+          <td >A/c No.</td>
+          <td id="eacc" width="100"></td>
+        </tr>
+        <tr>
+          <th colspan="5">Earnings</th>
+          <th colspan="5">Deductions</th>
+          
+        </tr>
+        <tr>
+          <td>Basic Salary</td>
+          <td colspan="4" id="basic"> 1</td>
+          <td>EPF</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>House Rent</td>
+          <td colspan="4" id="hr"> 1</td>
+          <td>Health insurance</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Conveyance Allowances</td>
+          <td colspan="4"> 1</td>
+          <td>Professional Tax</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Medical Allowances </td>
+          <td colspan="4"> 1</td>
+          <td >TDS</td>
+          <td>1</td>
+          
+        </tr>
+      
+        <tr>
+          <td>Special Allowances </td>
+          <td colspan="4"> 1</td>
+          <td colspan="4"></td>
+          
+        </tr>
+        <tr>
+          <td>Gross Salary </td>
+            <td colspan="4" id="gross"></td>
+            <td>  Total Deductions</td>
+            <td>1</td>
+        </tr>
+        <tr>
+          <th colspan="5">Net pay</th>
+          <th colspan="4">0</th>
+        <tr>
+        </tr>
+          
       </table>
     </div>
-  </body>
-  <script>
-    function result() 
-    {
-         
-      // Get name from input
-       let name = document.getElementById("name").value;
-       let Department = document.getElementById("department").value;
-       document.getElementById("rname").innerHTML = name;
-      document.getElementById("rd").innerHTML = Department;
+    <script>
+      function payslip() 
+      {
+           
+        // Get name from input
+         let name = document.getElementById("emname").value;
+         let department = document.getElementById("department").value;
+         let desgination = document.getElementById("designation").value;
+         let basicPay = parseInt(document.getElementById("bp").value);
+         let hra =parseInt( document.getElementById("hra").value);
+         let da = parseInt(document.getElementById("da").value);
 
-        document.getElementById("data").style.display="none";
-    }
-  </script>
+        document.getElementById("ename").innerHTML = name;
+        document.getElementById("edept").innerHTML = department;
+        document.getElementById("desgination").innerHTML = desgination;
+        document.getElementById("basic").innerHTML = basicPay;
+        document.getElementById("hr").innerHTML = hra;
+        document.getElementById("da").innerHTML = da;
+        document.getElementById("gross").innerHTML = basicPay+hra
+        // document.getElementById("ename").style.display="none";
+       
+  
+          
+      }
+    </script>
+  </body>
+
 </html>
