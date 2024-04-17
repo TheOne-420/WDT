@@ -15,6 +15,10 @@
         width:90px;
         display: inline-block;
       }
+      #marksheet 
+      {
+        display: none;
+      }
       #marksheet, #logo, table,#personalInfo
       {
         
@@ -81,6 +85,7 @@
 
 
     <button type="submit" onclick="generate()">SUBMIT</button>
+    
    </div>
    
     <div id="marksheet">
@@ -158,6 +163,10 @@
       <label  id="statment" style="font-weight: bold;">
         Result: Compartment in Hindi and Physics
       </label>
+      <br>
+      <button id="back" onclick="back()">
+        GO BACK
+      </button>
     </div>
   </body>
   <script>
@@ -229,7 +238,27 @@
             //  let h = new XMLHttpRequest();
             //  h.open('GET', 'login.json', true );
             //  h.send();
-        //document.getElementById("info").style.display="none";
+        document.getElementById("info").style.display="none";
+        document.getElementById("marksheet").style.display="block";
     }
+    function back()
+    {
+      document.getElementById("info").style.display="block";
+      document.getElementById("marksheet").style.display="none";
+      document.getElementById("schoolName").value="";
+      document.getElementById("studentName").value="";
+      document.getElementById("fatherName").value="";
+      document.getElementById("dob").value="";
+      document.getElementsByName("sex")[0].checked=false;
+      document.getElementsByName("sex")[1].checked=false;
+      document.getElementById("hindi").value="";
+      document.getElementById("english").value="";
+      document.getElementById("maths").value="";
+      document.getElementById("physics").value="";
+      document.getElementById("chemistry").value="";
+   
+     
+  
+   }
   </script>
 </html>

@@ -2,26 +2,61 @@
 
 <head>
   
-    <title>Document</title>
+    <title>Login Page</title>
+    <style>
+        body
+        {
+            background-color: #f2f2f2;
+        }
+        #main
+        {
+           
+            
+            padding: 60px;
+            background-color: lawngreen;
+            border: 2px solid rebeccapurple ;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+
+        }
+        #main button 
+        {
+          margin-left: 105px;
+          width: 170px;
+        }
+       label
+       {
+        width: 100px;
+        display: inline-flex;
+        color: red;
+       }
+    </style>
 </head>
 <body>
+    <div id="main">
+
+    
+        <h1>Login Page</h1>
+  
         <label for="username">USERNAME:</label>
         <input type="text" id="username">
         <br>
         <label for="password">Password:</label>
         <input type="password" id="password">
-
-        <input type="submit" onclick="validate()">
+        <br>
+        <br>
+        <button onclick="validate()">
+            Validate
+        </button>
+        
+    </div>
    
    
  <script>
-   
- 
-     
-    
-  
+
     function validate(){
-       console.log();
+      
        
         let username=document.getElementById("username").value;
         let password=document.getElementById("password").value;
@@ -53,7 +88,7 @@
                 {
                     alert("Welcome "+ username);
                     window.location ="payslip.html";
-                    ;
+                    
                 }
                 else
                 {
