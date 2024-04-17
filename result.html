@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>marksheet</title>
+    <script src="jquery.js"></script>
     <style>
     
       #info label
@@ -84,7 +85,7 @@
     <input type="text" id="chemistry" />
 
 
-    <button type="submit" onclick="generate()">SUBMIT</button>
+    <button type="submit" id="submit" onclick="generate()" >SUBMIT</button>
     
    </div>
    
@@ -164,12 +165,22 @@
         Result: Compartment in Hindi and Physics
       </label>
       <br>
-      <button id="back" onclick="back()">
+      <button id="back" onclick="goBack()">
         GO BACK
       </button>
     </div>
   </body>
   <script>
+     $(document).ready
+     (
+      function() 
+     {
+        $("#submit").click(function() 
+        {
+           $("#marksheet").show(1000);
+           $("#info").hide(1000);
+        })
+     });
     function generate() 
     {     //Marks input
        let hindiMarks = parseInt(document.getElementById("hindi").value);
@@ -238,13 +249,12 @@
             //  let h = new XMLHttpRequest();
             //  h.open('GET', 'login.json', true );
             //  h.send();
-        document.getElementById("info").style.display="none";
-        document.getElementById("marksheet").style.display="block";
+        // document.getElementById("info").style.display="none";
+        // document.getElementById("marksheet").style.display="block";
     }
-    function back()
+    function goBack()
     {
-      document.getElementById("info").style.display="block";
-      document.getElementById("marksheet").style.display="none";
+
       document.getElementById("schoolName").value="";
       document.getElementById("studentName").value="";
       document.getElementById("fatherName").value="";
@@ -257,8 +267,17 @@
       document.getElementById("physics").value="";
       document.getElementById("chemistry").value="";
    
+      
      
-  
+     
+        $("#back").click(function() 
+        {
+           $("#marksheet").hide(1000);
+           $("#info").show(1000);
+        })
+     
+           // document.getElementById("info").style.display="block";
+      // document.getElementById("marksheet").style.display="none";
    }
   </script>
 </html>
